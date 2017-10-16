@@ -5,6 +5,7 @@ return array(
         'Application',
         'ZendDeveloperTools',
         'Blog',
+        'Album',
     ),
 
     // These are various options for the listeners attached to the ModuleManager
