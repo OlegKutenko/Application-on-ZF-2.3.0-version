@@ -1,12 +1,21 @@
 <?php
 
 return array(
+    'controllers' => array(
+        'invokables' => array(
+            'Blog\Controller\Index' => 'Blog\Controller\IndexController'
+        ),
+    ),
     'router' => array(
         'routes' => array(
             'blog' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'type'    => 'segment',
                 'options' => array(
-                    'route'    => '/',
+                    'route'    => '/blog[/:action][/:id]',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id'     => '[0-9]+',
+                    ),
                     'defaults' => array(
                         'controller' => 'Blog\Controller\Index',
                         'action'     => 'index',
@@ -62,11 +71,6 @@ return array(
                 'base_dir' => __DIR__ . '/../language',
                 'pattern'  => '%s.mo',
             ),
-        ),
-    ),
-    'controllers' => array(
-        'invokables' => array(
-            'Blog\Controller\Index' => 'Blog\Controller\IndexController'
         ),
     ),
     'view_manager' => array(
